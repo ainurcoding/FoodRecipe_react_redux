@@ -31,15 +31,16 @@ const MyRecipe = () => {
     const dispatch = useDispatch();
 
     // useSelector for get reducer
-    const recipe =  useSelector((state) => {
+    const {recipes, isLoading, isError} =  useSelector((state) => {
         return state.recipe
     })
 
     useEffect(() => {
         const loadData = async () => {
-            await dispatch(ListRecipe(token));
-            console.log(recipe.recipes.rows)
-            console.log(recipe.isLoading)
+            await dispatch(ListRecipe());
+            console.log(recipes)
+            console.log(isLoading)
+            console.log(isError)
            
         }
         loadData();
@@ -71,13 +72,13 @@ const MyRecipe = () => {
 
                 <div className={`row overflow-auto`} style={wrapCard}>
                     {
-                        recipe.isLoading ? (
+                        isLoading ? (
                             <h1>Loading</h1>
                         ) : (
-                            recipe.isError ? (
+                            isError ? (
                                 <h1>Error</h1>
                             ) : (
-                                recipe.recipes.rows.map((item, index) => (
+                                recipes.rows.map((item, index) => (
                                     <div key={index} className='col-4 ms-4 position-relative cardSize' style={card}>
                                 <img src={`${process.env.REACT_APP_BACKEND_URL}/${item.photo}`} alt={item.title} className='imgSize mb-3' />
                                 <p className={`position-absolute text-white ${gStyle['airbnb-md']} ${gStyle['top-60']} h2 ms-2`}>{item.title}</p>

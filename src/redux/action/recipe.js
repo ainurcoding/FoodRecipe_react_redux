@@ -1,20 +1,18 @@
 import axios from 'axios'
-import { Navigate } from 'react-router-dom';
 
 const token = localStorage.getItem('token');
 const URL = process.env.REACT_APP_BACKEND_URL;
 
-export const ListRecipe = (token) => {
-
+export const ListRecipe = () => {
     // console.log(token);
     return {
 
         type: 'GET_LIST_RECIPE',
         payload: axios({
             url: `${URL}/foodRecipe`,
-            headers: {
-                token: token
-            },
+            // headers: {
+            //     token: token
+            // },
             method: 'GET'
         })
     }

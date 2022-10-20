@@ -10,6 +10,7 @@ const recipeReducer = (state = initialState, action) => {
         case "GET_LIST_RECIPE_PENDING":
             return { ...state, isLoading: true }
         case "GET_LIST_RECIPE_FULFILLED":
+            console.log(action.payload)
             return { ...state, isLoading: false, recipes: action.payload.data }
         case "GET_LIST_RECIPE_REJECTED":
             return { ...state, isLoading: false, isError: true }

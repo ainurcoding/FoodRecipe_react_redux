@@ -114,18 +114,6 @@ const Landing = () => {
     const onSearchHandler = (e) => {
         e.preventDefault();
         navigate(`/search?title=${title}`)
-        // axios
-        //     .get(`${URL}/foodRecipe/${title}`, {
-                
-        //             headers: {
-        //                 token: token,
-        //             }
-                
-        //     })
-        //     .then((res) => {
-        //         console.log(res.data);
-        //         navigate(`/search?title=${title}`)
-        //     })
     }
 
 
